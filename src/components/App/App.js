@@ -6,7 +6,6 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 import Bitcoin from '../Bitcoin/Bitcoin';
 import Paper from 'material-ui/Paper';
 
-
 class App extends Component {
     render() {
         return (
@@ -25,14 +24,20 @@ class App extends Component {
                                         <ListItem button>
                                             <ListItemText primary="Lista de Compras"></ListItemText>
                                         </ListItem>
-                                    </NavLink >
+                                    </NavLink>
+
+                                    <NavLink to="/lista-2">
+                                        <ListItem button>
+                                            <ListItemText primary="Lista de Compras"></ListItemText>
+                                        </ListItem>
+                                    </NavLink>
                                 </List>
                             </Paper>
                         </Grid>
 
-
                         <Grid item xs={12}>
-                            <Route path="/lista" render={() => <div>Lista</div>} />
+                            <Route path="/lista" render={() => <div className='teste'>Lista</div>} />
+                            <Route path="/lista-2" render={() => <div className='teste'>Lista-2</div>} />
                         </Grid>
 
                     </Grid>
