@@ -57,7 +57,7 @@ class Bitcoin extends Component{
 
     render(){
         return (
-            <Card>
+            <Card elevation={0}>
                 <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
 
                 <Divider />
