@@ -6,7 +6,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuIcon  from 'material-ui-icons/Menu';
 import PersonPin  from 'material-ui-icons/PersonPin';
 import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
 
 const styles = theme => ({

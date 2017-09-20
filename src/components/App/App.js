@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import Grid from 'material-ui/Grid';
 import Bitcoin from '../Bitcoin/Bitcoin';
+import Lista from '../Lista/Lista';
+
 
 class App extends Component {
+
     render() {
         return (
             <div id="app">
@@ -13,10 +16,15 @@ class App extends Component {
                         <Bitcoin></Bitcoin>
                     </Grid>
 
+                    <Grid item xs={12}>
+                        <Lista />
+                    </Grid>
+
                 </Grid>
             </div>
         );
     }
+
 }
 
 export default App;
