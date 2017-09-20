@@ -3,7 +3,6 @@
  * Além das informações de venda, ele calcula por quanto é possível vender os Bitcoins que tenho
  * * O cálculo leva em consideração a quantidade de bitcoins setada na propriedade bitcoins, a comissão que a empresa cobra para realizar a transação e o preço de venda do BTC no momento
  */
-
 import React, { Component } from 'react';
 import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
