@@ -1,5 +1,5 @@
 {
-    "short_name": "lll - Lucy Lopes Landino",
+    "short_name": "lll",
     "name": "lll - Lucy Lopes Landino",
     "icons": [
         {
@@ -25,6 +25,6 @@
     ],
     "start_url": "./index.html",
     "display": "standalone",
-    "theme_color": "#000000",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff"
 }
