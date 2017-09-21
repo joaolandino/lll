@@ -1,5 +1,5 @@
 #app{
-    width: 95%;
+    width: calc(100% - 20px);
     max-width: 600px;
     margin: 0 auto;
 }
