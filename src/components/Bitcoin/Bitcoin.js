@@ -3,7 +3,9 @@
  * Além das informações de venda, ele calcula por quanto é possível vender os Bitcoins que tenho
  * * O cálculo leva em consideração a quantidade de bitcoins setada na propriedade bitcoins, a comissão que a empresa cobra para realizar a transação e o preço de venda do BTC no momento
  */
+
 import React, { Component } from 'react';
+import Header from '../Header/Header';
 import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
@@ -57,24 +59,28 @@ class Bitcoin extends Component{
 
     render(){
         return (
-            <Card elevation={0}>
-                <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
+            <div>
+                <Header pageTitle="Cotação Bitcoin" />
 
-                <Divider />
+                <Card elevation={0}>
+                    <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
 
-                <CardContent>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <Typography type="caption">Mínimo</Typography>
-                            <Typography type="body1">R${this.state.precoVendaBitcoinMinimo}</Typography>
+                    <Divider />
+
+                    <CardContent>
+                        <Grid container>
+                            <Grid item xs={6}>
+                                <Typography type="caption">Mínimo</Typography>
+                                <Typography type="body1">R${this.state.precoVendaBitcoinMinimo}</Typography>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Typography type="caption" align="right">Máximo</Typography>
+                                <Typography type="body1" align="right">R${this.state.precoVendaBitcoinMaximo}</Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item xs={6}>
-                            <Typography type="caption" align="right">Máximo</Typography>
-                            <Typography type="body1" align="right">R${this.state.precoVendaBitcoinMaximo}</Typography>
-                        </Grid>
-                    </Grid>
-                </CardContent>
-            </Card>
+                    </CardContent>
+                </Card>
+            </div>
         );
     }
 }

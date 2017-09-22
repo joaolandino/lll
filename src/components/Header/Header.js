@@ -9,6 +9,7 @@ import PersonPin  from 'material-ui-icons/PersonPin';
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import { Link } from 'react-router-dom';
+import Typography from 'material-ui/Typography';
 
 const styles = theme => ({
     AppBar: {
@@ -24,7 +25,6 @@ const styles = theme => ({
     }
 });
 
-
 class Header extends Component{
 
     constructor(props){
@@ -33,7 +33,8 @@ class Header extends Component{
         this.classes = props.classes;
 
         this.state = {
-            drawerState: false
+            drawerState: false,
+            pageTitle: props.pageTitle
         };
     }
 
@@ -49,14 +50,16 @@ class Header extends Component{
 
                 <AppBar
                     position='static'
-                    elevation={0}
+                    elevation={1}
                     className={this.classes.AppBar}
                     >
 
-                    <Toolbar className={this.classes.Toolbar}>
+                    <Toolbar disableGutters className={this.classes.Toolbar}>
                         <IconButton disableRipple={true} aria-label="Menu" onClick={this.handleDrawer.bind(this)}>
                             <MenuIcon className={this.classes.Icons} />
                         </IconButton>
+
+                        <Typography type="title">{this.state.pageTitle}</Typography>
                     </Toolbar>
                 </AppBar>
 
