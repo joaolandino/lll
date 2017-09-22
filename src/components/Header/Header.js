@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Drawer from 'material-ui/Drawer';
+import IconButton from 'material-ui/IconButton';
 import MenuIcon  from 'material-ui-icons/Menu';
 import PersonPin  from 'material-ui-icons/PersonPin';
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-
+import { Link } from 'react-router-dom';
 
 const styles = theme => ({
     AppBar: {
@@ -18,6 +19,9 @@ const styles = theme => ({
     Toolbar: {
         marginLeft: 0
     },
+    Icons: {
+        color: 'inherit'
+    }
 });
 
 
@@ -50,7 +54,9 @@ class Header extends Component{
                     >
 
                     <Toolbar className={this.classes.Toolbar}>
-                        <MenuIcon onClick={this.handleDrawer.bind(this)} />
+                        <IconButton disableRipple={true} aria-label="Menu" onClick={this.handleDrawer.bind(this)}>
+                            <MenuIcon className={this.classes.Icons} />
+                        </IconButton>
                     </Toolbar>
                 </AppBar>
 
@@ -61,9 +67,21 @@ class Header extends Component{
                     >
 
                     <List>
-                        <ListItem button component="a" href="http://github.com/joaolandino" target="_blank">
+                        <Link to="/cotacao-bitcoin" onClick={this.handleDrawer.bind(this)}>
+                            <ListItem button>
+                                <ListItemText primary="Cotação do Bitcoin" />
+                            </ListItem>
+                        </Link>
+
+                        <Link to="/lista-de-compras" onClick={this.handleDrawer.bind(this)}>
+                            <ListItem button>
+                                <ListItemText primary="Lista de Compras" />
+                            </ListItem>
+                        </Link>
+
+                        <ListItem button component="a" href="http://github.com/joaolandino" target="_blank" onClick={this.handleDrawer.bind(this)}>
                             <ListItemIcon>
-                                <PersonPin />
+                                <PersonPin className={this.classes.Icons} />
                             </ListItemIcon>
                             <ListItemText primary="Sobre o Desenvolvedor" secondary="github.com/joaolandino" />
                         </ListItem>

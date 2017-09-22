@@ -10,20 +10,6 @@ class Lista extends Component {
     constructor(props){
         super(props);
 
-        this.state = {
-            valorCompra: 0,
-            produtos: {
-                "1":{
-                    id: 1,
-                    nome: 'Coca-Cola'
-                },
-                "2":{
-                    id: 2,
-                    nome: 'Pepsi'
-                }
-            }
-        }
-
         listaCompras.push(
             {
                 id: 1,
@@ -83,34 +69,25 @@ class Lista extends Component {
             <List>
                 <form action="#" method="post">
 
-                {
-                listaCompras.map(produto => {
-                    return (
-                        <ListItem divider={true} key={produto.id}>
-                            <Grid container>
-                                <Grid item xs={6}>
-                                    <ListItemText primary={produto.produto} secondary={"Corredor: " + produto.corredor} />
+                    {
+                    listaCompras.map(produto => {
+                        return (
+                            <ListItem divider={true} key={produto.id}>
+                                <Grid container>
+                                    <Grid item xs={4}>
+                                        <ListItemText primary={produto.produto} secondary={"Corredor: " + produto.corredor} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <TextField placeholder="Qtd." name="qtd" onBlur={this.calculaValorCompra} />
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <TextField placeholder="Val. Unit." name="valor" onBlur={this.calculaValorCompra} />
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={3}>
-                                    <TextField placeholder="Qtd." name="qtd" onBlur={this.calculaValorCompra} />
-                                </Grid>
-                                <Grid item xs={3}>
-                                    <TextField placeholder="Val. Unit." name="valor" onBlur={this.calculaValorCompra} />
-                                </Grid>
-                            </Grid>
-                        </ListItem>
-                    )
-                })
-                }
-
-                <ListItem divider={true} key={0}>
-                    <Grid container>
-                        <Grid item xs={12}>
-                            <input type="submit" name="enviar" />
-                            <p>R${this.state.valorCompra}</p>
-                        </Grid>
-                    </Grid>
-                </ListItem>
+                            </ListItem>
+                        )
+                    })
+                    }
 
                 </form>
             </List>
