@@ -31,29 +31,37 @@ class Bitcoin extends Component{
 
 
     componentDidMount(){
+        this.canUpdate = true;
         this.updateBitcoin();
     }
 
 
     updateBitcoin(){
-        BitcoinTicker.getBitcoinTicker().then(ticker =>{
-            let tickerAtual = ticker.data.ticker.last;
-            let tickerMaximo = ticker.data.ticker.high;
-            let tickerMinimo = ticker.data.ticker.low;
-            let calculoVenda = (this.bitcoins * tickerAtual);
-            calculoVenda -= (calculoVenda * this.comissaoVenda) / 100;
+        if(this.canUpdate === true){
+            BitcoinTicker.getBitcoinTicker().then(ticker =>{
+                let tickerAtual = ticker.data.ticker.last;
+                let tickerMaximo = ticker.data.ticker.high;
+                let tickerMinimo = ticker.data.ticker.low;
+                let calculoVenda = (this.bitcoins * tickerAtual);
+                calculoVenda -= (calculoVenda * this.comissaoVenda) / 100;
 
-            this.setState({
-                precoVendaBitcoin: parseFloat(tickerAtual).toFixed(2),
-                precoVendaBitcoinMaximo: parseFloat(tickerMaximo).toFixed(2),
-                precoVendaBitcoinMinimo: parseFloat(tickerMinimo).toFixed(2),
-                valorEstimadoVenda: parseFloat(calculoVenda).toFixed(2)
+                this.setState({
+                    precoVendaBitcoin: parseFloat(tickerAtual).toFixed(2),
+                    precoVendaBitcoinMaximo: parseFloat(tickerMaximo).toFixed(2),
+                    precoVendaBitcoinMinimo: parseFloat(tickerMinimo).toFixed(2),
+                    valorEstimadoVenda: parseFloat(calculoVenda).toFixed(2)
+                });
             });
-        });
 
-        setTimeout(xpto => {
-            this.updateBitcoin();
-        }, 60000);
+            setTimeout(xpto => {
+                this.updateBitcoin();
+            }, 5000);
+        }
+    }
+
+
+    componentWillUnmount(){
+        this.canUpdate = false;
     }
 
 
