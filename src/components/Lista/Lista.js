@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import Grid from 'material-ui/Grid';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import TextField from 'material-ui/TextField';
 
-const listaCompras = [];
+let listaCompras = [];
 
 class Lista extends Component {
 
@@ -58,37 +57,39 @@ class Lista extends Component {
 
     }
 
+
+    componentWillUnmount(){
+        listaCompras = [];
+    }
+
+
     render(){
         return (
-            <div>
-                <Header pageTitle="Lista de Compras" />
+            <List>
+                <form action="#" method="post">
 
-                <List>
-                    <form action="#" method="post">
-
-                        {
-                            listaCompras.map(produto => {
-                                return (
-                                    <ListItem divider={true} key={produto.id}>
-                                        <Grid container>
-                                            <Grid item xs={4}>
-                                                <ListItemText primary={produto.produto} secondary={"Corredor: " + produto.corredor} />
-                                            </Grid>
-                                            <Grid item xs={4}>
-                                                <TextField placeholder="Qtd." name="qtd" />
-                                            </Grid>
-                                            <Grid item xs={4}>
-                                                <TextField placeholder="Val. Unit." name="valor" />
-                                            </Grid>
+                    {
+                        listaCompras.map(produto => {
+                            return (
+                                <ListItem divider={true} key={produto.id}>
+                                    <Grid container>
+                                        <Grid item xs={4}>
+                                            <ListItemText primary={produto.produto} secondary={"Corredor: " + produto.corredor} />
                                         </Grid>
-                                    </ListItem>
-                                )
-                            })
-                        }
+                                        <Grid item xs={4}>
+                                            <TextField placeholder="Qtd." name="qtd" />
+                                        </Grid>
+                                        <Grid item xs={4}>
+                                            <TextField placeholder="Val. Unit." name="valor" />
+                                        </Grid>
+                                    </Grid>
+                                </ListItem>
+                            )
+                        })
+                    }
 
-                    </form>
-                </List>
-            </div>
+                </form>
+            </List>
         );
     }
 }

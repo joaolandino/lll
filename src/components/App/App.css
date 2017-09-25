@@ -4,7 +4,7 @@
     margin: 10px auto 0 auto;
 }
 
-@-webkit-keyframes componentIn {
+/*@-webkit-keyframes componentIn {
     from{ opacity: 0; top: 20px; }
     to{ opacity: 1; top: 0; }
 }
@@ -24,3 +24,4 @@
             animation: componentIn .5s .1s forwards;
 
 }
+*/

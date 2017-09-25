@@ -5,7 +5,6 @@
  */
 
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import Card, { CardHeader, CardContent } from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
@@ -67,28 +66,24 @@ class Bitcoin extends Component{
 
     render(){
         return (
-            <div>
-                <Header pageTitle="Cotação Bitcoin" />
+            <Card elevation={0}>
+                <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
 
-                <Card elevation={0}>
-                    <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
+                <Divider />
 
-                    <Divider />
-
-                    <CardContent>
-                        <Grid container>
-                            <Grid item xs={6}>
-                                <Typography type="caption">Mínimo</Typography>
-                                <Typography type="body1">R${this.state.precoVendaBitcoinMinimo}</Typography>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Typography type="caption" align="right">Máximo</Typography>
-                                <Typography type="body1" align="right">R${this.state.precoVendaBitcoinMaximo}</Typography>
-                            </Grid>
+                <CardContent>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <Typography type="caption">Mínimo</Typography>
+                            <Typography type="body1">R${this.state.precoVendaBitcoinMinimo}</Typography>
                         </Grid>
-                    </CardContent>
-                </Card>
-            </div>
+                        <Grid item xs={6}>
+                            <Typography type="caption" align="right">Máximo</Typography>
+                            <Typography type="body1" align="right">R${this.state.precoVendaBitcoinMaximo}</Typography>
+                        </Grid>
+                    </Grid>
+                </CardContent>
+            </Card>
         );
     }
 }

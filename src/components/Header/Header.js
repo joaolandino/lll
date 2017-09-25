@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon  from 'material-ui-icons/Menu';
-import PersonPin  from 'material-ui-icons/PersonPin';
 import { withStyles } from 'material-ui/styles';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import { Link } from 'react-router-dom';
 import Typography from 'material-ui/Typography';
+import Menu from './Menu';
+
 
 const styles = theme => ({
     AppBar: {
@@ -19,11 +17,9 @@ const styles = theme => ({
     },
     Toolbar: {
         marginLeft: 0
-    },
-    Icons: {
-        color: 'inherit'
     }
 });
+
 
 class Header extends Component{
 
@@ -33,15 +29,9 @@ class Header extends Component{
         this.classes = props.classes;
 
         this.state = {
-            drawerState: false,
-            pageTitle: props.pageTitle
+            pageTitle: 'Hello World',
+            menuState: true
         };
-    }
-
-    handleDrawer(){
-        this.setState({
-            drawerState: !this.state.drawerState
-        });
     }
 
     render(){
@@ -55,41 +45,15 @@ class Header extends Component{
                     >
 
                     <Toolbar disableGutters className={this.classes.Toolbar}>
-                        <IconButton disableRipple={true} aria-label="Menu" onClick={this.handleDrawer.bind(this)}>
-                            <MenuIcon className={this.classes.Icons} />
+                        <IconButton disableRipple={true} aria-label="Menu">
+                            <MenuIcon />
                         </IconButton>
 
                         <Typography type="title">{this.state.pageTitle}</Typography>
                     </Toolbar>
                 </AppBar>
 
-                <Drawer
-                    type="temporary"
-                    open={this.state.drawerState}
-                    onRequestClose={this.handleDrawer.bind(this)}
-                    >
-
-                    <List>
-                        <Link to="/cotacao-bitcoin" onClick={this.handleDrawer.bind(this)}>
-                            <ListItem button>
-                                <ListItemText primary="Cotação do Bitcoin" />
-                            </ListItem>
-                        </Link>
-
-                        <Link to="/lista-de-compras" onClick={this.handleDrawer.bind(this)}>
-                            <ListItem button>
-                                <ListItemText primary="Lista de Compras" />
-                            </ListItem>
-                        </Link>
-
-                        <ListItem button component="a" href="http://github.com/joaolandino" target="_blank" onClick={this.handleDrawer.bind(this)}>
-                            <ListItemIcon>
-                                <PersonPin className={this.classes.Icons} />
-                            </ListItemIcon>
-                            <ListItemText primary="Sobre o Desenvolvedor" secondary="github.com/joaolandino" />
-                        </ListItem>
-                    </List>
-                </Drawer>
+                <Menu state={this.state.menuState} />
 
             </div>
         );

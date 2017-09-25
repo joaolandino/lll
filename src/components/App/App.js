@@ -13,8 +13,11 @@ class App extends Component {
         return (
             <Grid container id="app">
 
+                <Grid item xs={12}>
+                    <Header />
+                </Grid>
+
                 <Grid item xs={12} id="container">
-                    <Route exact path="/" component={Header} />
                     <Route exact path="/cotacao-bitcoin" component={Bitcoin} />
                     <Route exact path="/lista-de-compras" component={Lista}/>
                 </Grid>
