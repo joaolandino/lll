@@ -29,7 +29,7 @@ class Header extends Component{
         this.classes = props.classes;
 
         this.state = {
-            pageTitle: 'Hello World',
+            pageTitle: 'Lucy Lopes Landino',
             menuState: false
         };
     }
@@ -38,6 +38,14 @@ class Header extends Component{
         this.setState({
             menuState: !this.state.menuState
         });
+    }
+
+    pageTitle(title){
+        if(title){
+            this.setState({
+                pageTitle: title
+            });
+        }
     }
 
     render(){
@@ -50,8 +58,15 @@ class Header extends Component{
                     className={this.classes.AppBar}
                     >
 
-                    <Toolbar disableGutters className={this.classes.Toolbar}>
-                        <IconButton disableRipple={true} aria-label="Menu" onClick={this.handleMenu.bind(this)}>
+                    <Toolbar
+                        disableGutters
+                        className={this.classes.Toolbar}>
+
+                        <IconButton
+                            disableRipple={true}
+                            aria-label="Menu"
+                            onClick={this.handleMenu.bind(this)}>
+
                             <MenuIcon />
                         </IconButton>
 
@@ -59,7 +74,9 @@ class Header extends Component{
                     </Toolbar>
                 </AppBar>
 
-                <Menu state={this.state.menuState} />
+                <Menu
+                    state={this.state.menuState}
+                    triggerPageTitle={(title) => this.pageTitle(title)} />
 
             </div>
         );

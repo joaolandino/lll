@@ -15,7 +15,6 @@ const styles = theme => ({
 
 class Menu extends Component{
 
-
     constructor(props){
         super(props);
 
@@ -26,18 +25,15 @@ class Menu extends Component{
         }
     }
 
-
     handleDrawer(){
         this.setState({
             drawerState: !this.state.drawerState
         });
     }
 
-
     componentWillReceiveProps(props){
         this.handleDrawer();
     }
-
 
     render(){
         return(
@@ -48,23 +44,38 @@ class Menu extends Component{
                 >
 
                 <List>
-                    <Link to="/cotacao-bitcoin" onClick={this.handleDrawer.bind(this)}>
+                    <Link
+                        to="/cotacao-bitcoin"
+                        onClick={() => this.props.triggerPageTitle('Cotação Bitcoin')}>
+
                         <ListItem button>
                             <ListItemText primary="Cotação do Bitcoin" />
                         </ListItem>
                     </Link>
 
-                    <Link to="/lista-de-compras" onClick={this.handleDrawer.bind(this)}>
+                    <Link
+                        to="/lista-de-compras"
+                        onClick={() => this.props.triggerPageTitle('Lista de Compras')}>
+
                         <ListItem button>
                             <ListItemText primary="Lista de Compras" />
                         </ListItem>
                     </Link>
 
-                    <ListItem button component="a" href="http://github.com/joaolandino" target="_blank" onClick={this.handleDrawer.bind(this)}>
+                    <ListItem
+                        button
+                        component="a"
+                        href="http://github.com/joaolandino"
+                        target="_blank"
+                        onClick={this.handleDrawer.bind(this)}>
+
                         <ListItemIcon>
                             <PersonPin className={this.classes.Icons} />
                         </ListItemIcon>
-                        <ListItemText primary="Sobre o Desenvolvedor" secondary="github.com/joaolandino" />
+
+                        <ListItemText
+                            primary="Sobre o Desenvolvedor"
+                            secondary="github.com/joaolandino" />
                     </ListItem>
                 </List>
             </Drawer>
