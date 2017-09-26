@@ -48,7 +48,7 @@ class Menu extends Component{
                         to="/cotacao-bitcoin"
                         onClick={() => this.props.triggerPageTitle('Cotação Bitcoin')}>
 
-                        <ListItem button>
+                        <ListItem button disableRipple>
                             <ListItemText primary="Cotação do Bitcoin" />
                         </ListItem>
                     </Link>
@@ -57,13 +57,14 @@ class Menu extends Component{
                         to="/lista-de-compras"
                         onClick={() => this.props.triggerPageTitle('Lista de Compras')}>
 
-                        <ListItem button>
+                        <ListItem button disableRipple>
                             <ListItemText primary="Lista de Compras" />
                         </ListItem>
                     </Link>
 
                     <ListItem
                         button
+                        disableRipple
                         component="a"
                         href="http://github.com/joaolandino"
                         target="_blank"

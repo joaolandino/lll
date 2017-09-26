@@ -34,18 +34,10 @@ class Header extends Component{
         };
     }
 
-    handleMenu(){
-        this.setState({
-            menuState: !this.state.menuState
-        });
-    }
-
     pageTitle(title){
-        if(title){
-            this.setState({
-                pageTitle: title
-            });
-        }
+        this.setState({
+            pageTitle: title
+        });
     }
 
     render(){
@@ -64,8 +56,7 @@ class Header extends Component{
 
                         <IconButton
                             disableRipple={true}
-                            aria-label="Menu"
-                            onClick={this.handleMenu.bind(this)}>
+                            onClick={() => this.setState({menuState: !this.state.menuState})}>
 
                             <MenuIcon />
                         </IconButton>
