@@ -30,8 +30,14 @@ class Header extends Component{
 
         this.state = {
             pageTitle: 'Hello World',
-            menuState: true
+            menuState: false
         };
+    }
+
+    handleMenu(){
+        this.setState({
+            menuState: !this.state.menuState
+        });
     }
 
     render(){
@@ -45,7 +51,7 @@ class Header extends Component{
                     >
 
                     <Toolbar disableGutters className={this.classes.Toolbar}>
-                        <IconButton disableRipple={true} aria-label="Menu">
+                        <IconButton disableRipple={true} aria-label="Menu" onClick={this.handleMenu.bind(this)}>
                             <MenuIcon />
                         </IconButton>
 

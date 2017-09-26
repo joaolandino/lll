@@ -22,7 +22,7 @@ class Menu extends Component{
         this.classes = props.classes;
 
         this.state = {
-            drawerState: props.state
+            drawerState: this.props.state
         }
     }
 
@@ -31,6 +31,11 @@ class Menu extends Component{
         this.setState({
             drawerState: !this.state.drawerState
         });
+    }
+
+
+    componentWillReceiveProps(props){
+        this.handleDrawer();
     }
 
 
