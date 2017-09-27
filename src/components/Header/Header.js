@@ -56,7 +56,8 @@ class Header extends Component{
 
                         <IconButton
                             disableRipple={true}
-                            onClick={() => this.setState({menuState: !this.state.menuState})}>
+                            onClick={() => this.setState({menuState: !this.state.menuState})}
+                            aria-label="Abrir Menu">
 
                             <MenuIcon />
                         </IconButton>

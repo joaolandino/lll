@@ -78,7 +78,7 @@ class Lista extends Component {
                                 <ListItem disableGutters divider={true} key={produto.id}>
                                     <Grid container spacing={0}>
                                         <Grid item xs={2}>
-                                            <IconButton disableRipple={true}>
+                                            <IconButton disableRipple={true} aria-label="Remover 1">
                                                 <Remove />
                                             </IconButton>
                                         </Grid>
@@ -88,7 +88,7 @@ class Lista extends Component {
                                         </Grid>
 
                                         <Grid item xs={2}>
-                                            <IconButton disableRipple={true}>
+                                            <IconButton disableRipple={true} aria-label="Adicionar 1">
                                                 <Add />
                                             </IconButton>
                                         </Grid>

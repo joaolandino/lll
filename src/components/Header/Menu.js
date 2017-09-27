@@ -68,6 +68,7 @@ class Menu extends Component{
                         component="a"
                         href="http://github.com/joaolandino"
                         target="_blank"
+                        aria-label="Ir para Github"
                         onClick={this.handleDrawer.bind(this)}>
 
                         <ListItemIcon>
