@@ -1,69 +1,50 @@
 import React, { Component } from 'react';
+import './Lista.css';
 import Grid from 'material-ui/Grid';
 import List, { ListItem, ListItemText } from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
-import Add  from 'material-ui-icons/Add';
-import Remove  from 'material-ui-icons/Remove';
-
-let listaCompras = [];
+import Menu, { MenuItem } from 'material-ui/Menu';
 
 class Lista extends Component {
 
     constructor(props){
         super(props);
 
-        this.classes = props.classes;
-
-        listaCompras.push(
+        this.listaCompra = [
             {
-                id: 1,
-                produto: 'Coca-Cola',
-                corredor: 1,
-                valor: 1.20,
-                quantidade: 1
+              'codigo': '1',
+              'produto': 'Coca-Cola',
+              'quantidade': 1
             },
             {
-                id: 2,
-                produto: 'Macarrão',
-                corredor: 7,
-                valor: 1.20,
-                quantidade: 1
-            },
-            {
-                id: 3,
-                produto: 'Pepsi',
-                corredor: 1,
-                valor: 1.20,
-                quantidade: 1
-            },
-            {
-                id: 4,
-                produto: 'Legumes',
-                corredor: 10,
-                valor: 1.20,
-                quantidade: 1
-            },
-            {
-                id: 5,
-                produto: 'Verduras',
-                corredor: 10,
-                valor: 1.20,
-                quantidade: 1
-            },
-            {
-                id: 6,
-                produto: 'Sorvete',
-                corredor: 10,
-                valor: 1.20,
-                quantidade: 1
+              'codigo': '2',
+              'produto': 'Arroz',
+              'quantidade': 1
             }
-        );
+        ];
 
+        this.state = {
+          menuOpen: false,
+          menuAnchor: null
+        }
     }
 
 
     componentWillUnmount(){
-        listaCompras = [];
+        this.listaCompra = [];
+    }
+
+
+    handleClickListItem(event){
+      this.setState({
+        menuOpen: true,
+        menuAnchor: event.currentTarget
+      });
+    }
+
+    handleRequestClose(){
+      this.setState({
+        menuOpen: false
+      });
     }
 
 
@@ -73,25 +54,46 @@ class Lista extends Component {
                 <form action="#" method="post">
 
                     {
-                        listaCompras.map(produto => {
+                        this.listaCompra.map(item => {
                             return (
-                                <ListItem disableGutters divider={true} key={produto.id}>
-                                    <Grid container spacing={0}>
-                                        <Grid item xs={2}>
-                                            <IconButton disableRipple={true} aria-label="Remover 1">
-                                                <Remove />
-                                            </IconButton>
+                                <ListItem disableGutters divider={true} key={item.codigo}>
+                                    <Grid container spacing={0} align="center">
+
+                                        <Grid item xs={8} md={10}>
+                                            <ListItemText primary={item.produto} secondary={"Quantidade: " + item.quantidade} />
                                         </Grid>
 
-                                        <Grid item xs={8}>
-                                            <ListItemText primary={produto.produto} secondary={"Quantidade: " + produto.quantidade} />
+                                        <Grid item xs={4} md={2} className="centered">
+                                          <List dense={true}>
+                                            <ListItem button onClick={this.handleClickListItem.bind(this)}>
+                                              <ListItemText primary="Preço" secondary="R$00,00" />
+                                            </ListItem>
+                                          </List>
+                                          <Menu anchorEl={this.state.menuAnchor} open={this.state.menuOpen} onRequestClose={this.handleRequestClose.bind(this)} transitionDuration={0}>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$0,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$1,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$1,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$2,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$2,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$3,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$3,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$4,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$4,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$5,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$5,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$6,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$6,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$7,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$7,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$8,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$8,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$9,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$9,50</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$10,00</MenuItem>
+                                              <MenuItem onClick={this.handleRequestClose.bind(this)}>R$10,50</MenuItem>
+                                          </Menu>
                                         </Grid>
 
-                                        <Grid item xs={2}>
-                                            <IconButton disableRipple={true} aria-label="Adicionar 1">
-                                                <Add />
-                                            </IconButton>
-                                        </Grid>
                                     </Grid>
                                 </ListItem>
                             )
