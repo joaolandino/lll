@@ -41,6 +41,7 @@ class Lista extends Component {
       });
     }
 
+
     handleRequestClose(){
       this.setState({
         menuOpen: false
@@ -57,7 +58,7 @@ class Lista extends Component {
                         this.listaCompra.map(item => {
                             return (
                                 <ListItem disableGutters divider={true} key={item.codigo}>
-                                    <Grid container spacing={0} align="center">
+                                    <Grid container spacing={0} alignItems="center">
 
                                         <Grid item xs={8} md={10}>
                                             <ListItemText primary={item.produto} secondary={"Quantidade: " + item.quantidade} />
@@ -65,8 +66,8 @@ class Lista extends Component {
 
                                         <Grid item xs={4} md={2} className="centered">
                                           <List dense={true}>
-                                            <ListItem button onClick={this.handleClickListItem.bind(this)}>
-                                              <ListItemText primary="Preço" secondary="R$00,00" />
+                                            <ListItem disableGutters button onClick={this.handleClickListItem.bind(this)}>
+                                              <ListItemText primary="Preço" secondary="R$00,00" className="ListItemText" />
                                             </ListItem>
                                           </List>
                                           <Menu anchorEl={this.state.menuAnchor} open={this.state.menuOpen} onRequestClose={this.handleRequestClose.bind(this)} transitionDuration={0}>

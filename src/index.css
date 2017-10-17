@@ -17,3 +17,13 @@ body{
     background: #ffffff;
     font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+.centered{
+  text-align: center;
+  margin: auto;
+}
+
+.ListItemText:only-of-type{
+  padding-left: 0;
+  padding-right: 0;
+}
