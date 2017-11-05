@@ -19,6 +19,7 @@ class Bitcoin extends Component{
 
         this.bitcoins = 0.01923;
         this.comissaoVenda = 0.7;
+        this.valorInvestido = 200;
 
         this.state = {
             precoVendaBitcoin: 0,
@@ -43,12 +44,14 @@ class Bitcoin extends Component{
                 let tickerMinimo = ticker.data.ticker.low;
                 let calculoVenda = (this.bitcoins * tickerAtual);
                 calculoVenda -= (calculoVenda * this.comissaoVenda) / 100;
+                let calculaLucro = ((calculoVenda - this.valorInvestido) * 100) / this.valorInvestido;
 
                 this.setState({
                     precoVendaBitcoin: parseFloat(tickerAtual).toFixed(2),
                     precoVendaBitcoinMaximo: parseFloat(tickerMaximo).toFixed(2),
                     precoVendaBitcoinMinimo: parseFloat(tickerMinimo).toFixed(2),
-                    valorEstimadoVenda: parseFloat(calculoVenda).toFixed(2)
+                    valorEstimadoVenda: parseFloat(calculoVenda).toFixed(2),
+                    valorLucro: parseFloat(calculaLucro).toFixed(2)
                 });
             });
 
@@ -67,7 +70,7 @@ class Bitcoin extends Component{
     render(){
         return (
             <Card elevation={0}>
-                <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda}></CardHeader>
+                <CardHeader title={"1BTC = R$" + this.state.precoVendaBitcoin} subheader={this.bitcoins + "BTC = R$" + this.state.valorEstimadoVenda + " (" + this.state.valorLucro + "%)"}></CardHeader>
 
                 <Divider />
 
